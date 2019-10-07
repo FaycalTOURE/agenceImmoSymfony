@@ -1,0 +1,64 @@
+<div class="card mb-4 col-4">
+    <div class="card-body">
+        <div class="text-center">
+            {% if entity.filename %}
+                <img src="{{ vich_uploader_asset(entity, 'imageFile') | imagine_filter('thumb') }}" alt="{{ entity.filename }}">
+            {% else %}
+                <img src="{{ '/images/proprieties/placeholder.jpg' | imagine_filter('thumb') }}" alt="">
+            {% endif %}
+        </div>
+        <a href="{{ path('property.show', {id: entity.id, slug: entity.slug}) }}"
+        class="card-tite card-link">
+            <h2>{{ entity.title }}</h2>
+        </a>
+        <div class="card-text">
+            <p> {{ entity.description }}</p>
+            <strong>
+                <p> Prix: {{ entity.formatedPrice }} €</p>
+            </strong>
+            <p>Localisation {{ entity.city }}</p>
+            <table class="table">
+                <tr>
+                    <td>surface</td>
+                    <td>
+                        <span class="badge badge-secondary">{{ entity.surface }}
+                            <sup>m2</sup>
+                            </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pièces</td>
+                    <td>{{ entity.romms }}</td>
+                </tr>
+                <tr>
+                    <td>Chambres</td>
+                    <td>{{ entity.bedrooms }}</td>
+                </tr>
+                <tr>
+                    <td>Etage</td>
+                    <td>{{ entity.floor }}</td>
+                </tr>
+                <tr>
+                    <td>Pièces</td>
+                    <td>{{ entity.romms }}</td>
+                </tr>
+                <tr>
+                    <td>Chambres</td>
+                    <td>{{ entity.bedrooms }}</td>
+                </tr>
+                <tr>
+                    <td>Etage</td>
+                    <td>{{ entity.floor }}</td>
+                </tr>
+                <tr>
+                    <td>Code Postal</td>
+                    <td>{{ entity.postalCode }}</td>
+                </tr>
+                <tr>
+                    <td>Chauffage</td>
+                    <td>{{ entity.HeadInfos }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

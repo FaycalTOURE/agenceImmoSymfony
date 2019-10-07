@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title 'Superb Agence' %}
+{% block body %}
+    <div class="container">
+        <h1>WELCOME sur superb Agence !</h1>
+        <p class="alert alert-primary">L'agence de vente de biens</p>
+    </div>
+    <div class="container">
+        <h2>Derniers biens...</h2>
+        <div class="row">
+            {% for entity in property %}
+                <div class="col-3 p-3">
+                    <div class="border border-grey rounded p-3">
+                        <a href="{{ path('property.show', {id: entity.id, slug: entity.slug}) }}">
+                            <h2>{{ entity.title }}</h2>
+                            <span class="badge badge-secondary">{{ entity.surface }}
+                                <sup>m2</sup>
+                            </span>
+                        </a>
+                        <p> {{ entity.description }}</p>
+                        <strong>
+                            <p> Prix: {{ entity.formatedPrice }} €</p>
+                        </strong>
+                        <p>Localisation {{ entity.city }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

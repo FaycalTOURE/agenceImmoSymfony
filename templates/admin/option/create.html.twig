@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title 'Edition de bien' %}
+{% block body %}
+    <div class="container">
+        <h1>Creer une option</h1>
+        <div class="container">
+            {{ include('admin/option/partial/_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

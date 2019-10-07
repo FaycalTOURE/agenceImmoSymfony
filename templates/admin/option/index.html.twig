@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block title 'Gestion de biens' %}
+{% block body %}
+    <div class="container">
+        <h1>Gérer les options</h1>
+        {% for message in app.flashes('delete') %}
+            <p class="alert alert-danger">
+                {{ message }}
+            </p>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <h2></h2>
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Titre de l'option</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for option in options %}
+                    <tr>
+                        <td> {{ option.name }}</td>
+                        <td>
+                            <a href="{{ path('admin.option.edit', {id: option.id}) }}" class="btn btn-info">
+                            Editer
+                            </a>
+                            <form action="{{ path('admin.option.delete', {id: option.id}) }}" method="post" class="d-inline-block">
+                                <input class="d-none" name="_method" value="DELETE">
+                                <input class="d-none" name="_token" value="{{ csrf_token('delete' ~ option.id) }}">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-right">
+                <a href="{{ path('admin.option.new') }}" class="btn btn-primary">
+                    Creer une option
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

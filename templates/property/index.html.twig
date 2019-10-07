@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title 'Liste des biens' %}
+{% block body %}
+    <div class="container">
+        <h1>TOUS les biens</h1>
+
+        <div class="jumbotron">
+            {{ include('property/partial/_searchForm.html.twig', {button:'Rechercher'}) }}
+        </div>
+
+        <div class="row">
+            {% for entity in property %}
+                {{ include('property/partial/_property.html.twig') }}
+            {% endfor %}
+        </div>
+
+        <div class="navigation m-3 text-center">
+            {{ knp_pagination_render(property) }}
+        </div>
+    </div>
+{% endblock %}
