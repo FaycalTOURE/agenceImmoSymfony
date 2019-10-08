@@ -4,58 +4,79 @@
     <h1>{{ property.title }}</h1>
     <p> {{ property.description }}</p>
     <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-5 border border-grey rounded">
+        <div class="row">
+            <div class="col-6">
                 <div>
-                    <strong>
-                        <p> Prix: {{ property.formatedPrice }} €</p>
-                    </strong>
-                    <p>Localisation {{ property.city }}</p>
+                    {% if property.filename %}
+                        <img src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('medium') }}" alt="{{ property.filename }}">
+                    {% else %}
+                        <img src="{{ '/images/proprieties/placeholder.jpg' | imagine_filter('medium') }}" alt="">
+                    {% endif %}
                 </div>
-                <div>
-                    <table class="table">
-                        <tr>
-                            <td>surface</td>
-                            <td>{{ property.surface }}</td>
-                        </tr>
-                        <tr>
-                            <td>Pièces</td>
-                            <td>{{ property.romms }}</td>
-                        </tr>
-                        <tr>
-                            <td>Chambres</td>
-                            <td>{{ property.bedrooms }}</td>
-                        </tr>
-                        <tr>
-                            <td>Etage</td>
-                            <td>{{ property.floor }}</td>
-                        </tr>
+                {% if property.entityOption|length %}
+                    <div class="my-5 col-6 ml-0 pl-0">
+                        <ul class="list-group">
+                            <h2 class="list-group-item active"><strong>Le +</strong></h2>
+                            {% for option in property.entityOption %}
+                                <li class="list-group-item">{{ option.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-6 d-flex justify-content-between">
+                <div class="col-5 border border-grey rounded">
+                    <div>
+                        <strong>
+                            <p> Prix: {{ property.formatedPrice }} €</p>
+                        </strong>
+                        <p>Localisation {{ property.city }}</p>
+                    </div>
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <td>surface</td>
+                                <td>{{ property.surface }}</td>
+                            </tr>
+                            <tr>
+                                <td>Pièces</td>
+                                <td>{{ property.romms }}</td>
+                            </tr>
+                            <tr>
+                                <td>Chambres</td>
+                                <td>{{ property.bedrooms }}</td>
+                            </tr>
+                            <tr>
+                                <td>Etage</td>
+                                <td>{{ property.floor }}</td>
+                            </tr>
 
-                        <tr>
-                            <td>surface</td>
-                            <td>{{ property.surface }}</td>
-                        </tr>
-                        <tr>
-                            <td>Pièces</td>
-                            <td>{{ property.romms }}</td>
-                        </tr>
-                        <tr>
-                            <td>Chambres</td>
-                            <td>{{ property.bedrooms }}</td>
-                        </tr>
-                        <tr>
-                            <td>Etage</td>
-                            <td>{{ property.floor }}</td>
-                        </tr>
-                        <tr>
-                            <td>Code Postal</td>
-                            <td>{{ property.postalCode }}</td>
-                        </tr>
-                        <tr>
-                            <td>Chauffage</td>
-                            <td>{{ property.HeadInfos }}</td>
-                        </tr>
-                    </table>
+                            <tr>
+                                <td>surface</td>
+                                <td>{{ property.surface }}</td>
+                            </tr>
+                            <tr>
+                                <td>Pièces</td>
+                                <td>{{ property.romms }}</td>
+                            </tr>
+                            <tr>
+                                <td>Chambres</td>
+                                <td>{{ property.bedrooms }}</td>
+                            </tr>
+                            <tr>
+                                <td>Etage</td>
+                                <td>{{ property.floor }}</td>
+                            </tr>
+                            <tr>
+                                <td>Code Postal</td>
+                                <td>{{ property.postalCode }}</td>
+                            </tr>
+                            <tr>
+                                <td>Chauffage</td>
+                                <td>{{ property.HeadInfos }}</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
