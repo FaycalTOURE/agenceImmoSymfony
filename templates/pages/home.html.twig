@@ -13,9 +13,7 @@
                     <div class="border border-grey rounded p-3">
                         <a href="{{ path('property.show', {id: entity.id, slug: entity.slug}) }}">
                             <h2>{{ entity.title }}</h2>
-                            <span class="badge badge-secondary">{{ entity.surface }}
-                                <sup>m2</sup>
-                            </span>
+                            <span class="badge badge-pill badge-secondary">{{  entity.surface }} <sup>m2</sup></span>
                         </a>
                         <p> {{ entity.description }}</p>
                         <strong>
