@@ -2,9 +2,9 @@
     <div class="card-body">
         <div class="text-center">
             {% if entity.filename %}
-                <img src="{{ vich_uploader_asset(entity, 'imageFile') | imagine_filter('thumb') }}" alt="{{ entity.filename }}">
+                <img class="rounded-circle" src="{{ vich_uploader_asset(entity, 'imageFile') | imagine_filter('thumb') }}" alt="{{ entity.filename }}">
             {% else %}
-                <img src="{{ '/images/proprieties/placeholder.jpg' | imagine_filter('thumb') }}" alt="">
+                <img class="rounded-circle" src="{{ '/images/proprieties/placeholder.jpg' | imagine_filter('thumb') }}" alt="">
             {% endif %}
         </div>
         <a href="{{ path('property.show', {id: entity.id, slug: entity.slug}) }}"
